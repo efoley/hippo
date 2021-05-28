@@ -1,0 +1,5 @@
+nat n = [nat n-1] + 1
+
+nat 0 = 0
+
+RUN [nat 10]
