@@ -1,7 +1,6 @@
 # Hippo language
 
-The Hippo programming language is a simple language built around the concept of nodes.
-
+The Hippo programming language is a simple language built around the concept of nodes, which are similar to spreadsheet cells.
 
 ## Usage
 `pip install -r requirements.txt` (this install the lark parser dependency)
