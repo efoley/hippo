@@ -1,0 +1,5 @@
+cycle x = [bicycle x-1]
+
+bicycle x = [cycle x+1]
+
+RUN [cycle 199]

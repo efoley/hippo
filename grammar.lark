@@ -1,0 +1,40 @@
+?start: node_list _NEWLINE+ run_list _NEWLINE*
+
+node_list: _NEWLINE* node (_NEWLINE+ node)* _NEWLINE*
+
+run_list: "RUN" node_to_run+
+
+node_to_run: "[" name int* "]"
+
+node: node_pattern "=" expr3
+
+node_pattern: name param*
+
+?param: name
+      | int
+
+?expr3: expr2 
+      | expr3 "+" expr2 -> add
+      | expr3 "-" expr2 -> sub
+
+?expr2: expr1 
+      | expr2 "*" expr1 -> mul
+      | expr2 "/" expr1 ->div
+      | expr2 "%" expr1 -> mod
+
+?expr1: "(" expr3 ")" 
+      | "[" node_reference "]" 
+      | name
+      | int
+
+node_reference: name expr3*
+
+name: CNAME
+int: INT
+
+%import common.WS_INLINE
+%import common.NEWLINE -> _NEWLINE
+%import common.CNAME
+%import common.INT
+
+%ignore WS_INLINE
